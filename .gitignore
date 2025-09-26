@@ -1,14 +1,19 @@
-# Node (Angular client)
+# === Angular (client) ===
 client/node_modules
 client/dist
 client/.angular/cache
 
-# Java (Spring Boot server)
+# === Spring Boot (server) ===
 server/target
 *.class
+*.war
+*.jar
 
-# OS / IDE files
-.DS_Store
+# === Logs ===
 *.log
-.idea/
+
+# === IDEs / OS files ===
 .vscode/
+.idea/
+.DS_Store
+Thumbs.db

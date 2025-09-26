@@ -1,0 +1,84 @@
+<form [formGroup]="employeeForm">
+  <div layout="row">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      @if (title.errors && (title.dirty || title.touched)) {
+      <mat-error> Title is required </mat-error>
+      }
+
+      <input matInput type="text" maxlength="4" required formControlName="title" autofocus />
+    </mat-form-field>
+  </div>
+
+  <div layout="row">
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      @if (firstname.errors && (firstname.dirty || firstname.touched)) {
+      <mat-error> First name is required </mat-error>
+      }
+
+      <input matInput type="text" required formControlName="firstname" />
+    </mat-form-field>
+  </div>
+
+  <div layout="row">
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      @if (lastname.errors && (lastname.dirty || lastname.touched)) {
+      <mat-error> Last name is required </mat-error>
+      }
+
+      <input matInput type="text" required formControlName="lastname" />
+    </mat-form-field>
+  </div>
+  <div layout="row">
+    <mat-form-field>
+      <mat-label>Phone #</mat-label>
+      @if (phoneno.errors && (phoneno.dirty || phoneno.touched)) {
+      <mat-error>
+        @if (phoneno.hasError('required')) {
+        <span>Phone is required.</span>
+        } @if (!phoneno.hasError('required') && phoneno.hasError('invalidPhone')) {
+        <span> needs format (###)###-#### </span>
+        }
+      </mat-error>
+      }
+
+      <input matInput type="text" required formControlName="phoneno" />
+    </mat-form-field>
+  </div>
+  <div layout="row">
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      @if (email.errors && (email.dirty || email.touched)) {
+      <mat-error> Email is required </mat-error>
+      }
+
+      <input matInput type="email" required formControlName="email" />
+    </mat-form-field>
+  </div>
+  <div class="mat-pad-sm">
+    <span>
+      <button
+        mat-raised-button
+        type="button"
+        (click)="updateSelectedEmployee()"
+        [disabled]="!employeeForm.valid"
+      >
+        Save
+      </button>
+    </span>
+    <span>
+      @if (selectedEmployee.id) {
+      <button mat-raised-button type="button" (click)="deleted.emit(selectedEmployee)">
+        Delete
+      </button>
+      }
+    </span>
+    <span>
+      <button mat-raised-button type="button" (click)="cancelled.emit(selectedEmployee)">
+        Cancel
+      </button>
+    </span>
+  </div>
+</form>
