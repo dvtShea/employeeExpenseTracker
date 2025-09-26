@@ -1,0 +1,14 @@
+# Node (Angular client)
+client/node_modules
+client/dist
+client/.angular/cache
+
+# Java (Spring Boot server)
+server/target
+*.class
+
+# OS / IDE files
+.DS_Store
+*.log
+.idea/
+.vscode/
